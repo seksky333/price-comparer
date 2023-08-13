@@ -16,9 +16,10 @@ repositories {
 }
 
 dependencies {
+	implementation("joda-time:joda-time:2.11.2")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+	runtimeOnly("org.mariadb.jdbc:mariadb-java-client:3.0.8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
