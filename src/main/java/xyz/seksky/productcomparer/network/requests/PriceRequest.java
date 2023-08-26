@@ -1,34 +1,28 @@
-package xyz.seksky.productcomparer.models;
+package xyz.seksky.productcomparer.network.requests;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "price")
-public class ProductPrice {
-    @Id
-    Long id;
+public class PriceRequest {
+    @JsonProperty(value = "product_name", required = true)
     String productName;
+    @JsonProperty(value = "product_model", required = true)
     String productModel;
+    @JsonProperty(value = "product_price", required = true)
     String productPrice;
+    @JsonProperty(value = "seller", required = true)
     String seller;
+    @JsonProperty(value = "view_date", required = true)
     String viewDate;
+    @JsonProperty(value = "reference_url", required = true)
     String referenceUrl;
 
-    public ProductPrice() {
-    }
-
-    public ProductPrice(Long id, String productName, String productModel, String productPrice, String seller, String viewDate, String referenceUrl) {
-        this.id = id;
+    public PriceRequest(String productName, String productModel, String productPrice, String seller, String viewDate, String referenceUrl) {
         this.productName = productName;
         this.productModel = productModel;
         this.productPrice = productPrice;
         this.seller = seller;
         this.viewDate = viewDate;
         this.referenceUrl = referenceUrl;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getProductName() {

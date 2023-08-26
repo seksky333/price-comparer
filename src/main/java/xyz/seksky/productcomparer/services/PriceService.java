@@ -1,6 +1,6 @@
 package xyz.seksky.productcomparer.services;
 
-import xyz.seksky.productcomparer.models.ProductPrice;
+import xyz.seksky.productcomparer.Entity.ProductPriceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.seksky.productcomparer.repositories.PriceRepository;
@@ -16,9 +16,15 @@ public class PriceService {
         this.priceRepo = priceRepo;
     }
 
-    public List<ProductPrice> getAll() {
+    public List<ProductPriceEntity> getAll() {
         return priceRepo.findAll();
     }
 
+    public void addPrice(ProductPriceEntity price) {
+        priceRepo.save(price);
+    }
 
+    public Long getNextEntityId() {
+        return Long.valueOf(priceRepo.getNextId());
+    }
 }
