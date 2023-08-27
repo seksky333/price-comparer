@@ -12,8 +12,8 @@ public class ProductPriceEntity {
     String productModel;
     String productPrice;
     String seller;
-    String viewDate;
     String referenceUrl;
+    String viewDate;
 
     public ProductPriceEntity() {
     }
