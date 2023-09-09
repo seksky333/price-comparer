@@ -24,6 +24,7 @@ public class ProductPriceController {
         this.priceService = priceService;
     }
 
+//    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GetPriceResponse> getProduct() {
         List<ProductPriceEntity> prices = priceService.getAll();
