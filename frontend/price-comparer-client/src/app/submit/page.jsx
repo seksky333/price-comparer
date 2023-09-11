@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getProductPrice } from "../../data/product-price";
+import { getProducts } from "../../data/products";
 
 export default function SubmitPage() {
   const [formData, setFormData] = useState({
@@ -23,8 +23,8 @@ export default function SubmitPage() {
   };
 
   const fetchProductPrice = async () =>{
-    const productPrice = await getProductPrice();
-    console.log(productPrice);
+    const products = await getProducts();
+    console.log(products);
   }
 
   useEffect(() => {

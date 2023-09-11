@@ -5,39 +5,42 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import xyz.seksky.productcomparer.Entity.ProductPriceEntity;
+import xyz.seksky.productcomparer.Entity.ProductEntity;
+import xyz.seksky.productcomparer.models.Product;
 import xyz.seksky.productcomparer.network.requests.PriceRequest;
 import xyz.seksky.productcomparer.network.responses.GetPriceResponse;
 import xyz.seksky.productcomparer.network.responses.InvalidResponse;
 import xyz.seksky.productcomparer.network.responses.PriceResponse;
-import xyz.seksky.productcomparer.services.PriceService;
+import xyz.seksky.productcomparer.services.ProductService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/prices")
+@RequestMapping("/products")
 public class ProductPriceController {
-    private final PriceService priceService;
+    private final ProductService productService;
 
     @Autowired
-    public ProductPriceController(PriceService priceService) {
-        this.priceService = priceService;
+    public ProductPriceController(ProductService productService) {
+        this.productService = productService;
     }
 
-//    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GetPriceResponse> getProduct() {
-        List<ProductPriceEntity> prices = priceService.getAll();
-        GetPriceResponse response = new GetPriceResponse(prices);
+        List<Product> products = productService.getAll();
+        GetPriceResponse response = new GetPriceResponse(products);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PriceResponse> purchaseSeat(@RequestBody PriceRequest request) {
         try {
-            priceService.addPrice(
-                    new ProductPriceEntity(
-                            priceService.getNextEntityId(),
+            productService.addPrice(
+                    new ProductEntity(
+                            productService.getNextEntityId(),
                             request.getProductName(), request.getProductModel(), request.getProductPrice(),
                             request.getSeller(), request.getViewDate(), request.getReferenceUrl()
                     )

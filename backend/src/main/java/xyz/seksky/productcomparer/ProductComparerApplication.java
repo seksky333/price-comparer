@@ -13,7 +13,6 @@ public class ProductComparerApplication {
         SpringApplication.run(ProductComparerApplication.class, args);
     }
 
-
     @Bean
     public WebMvcConfigurer corsConfig() {
         return new WebMvcConfigurer() {

@@ -1,12 +1,12 @@
 package xyz.seksky.productcomparer.repositories;
 
 import org.springframework.data.jpa.repository.Query;
-import xyz.seksky.productcomparer.Entity.ProductPriceEntity;
+import xyz.seksky.productcomparer.Entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PriceRepository extends JpaRepository<ProductPriceEntity, Long> {
+public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     String GET_NEXT_ID = "SELECT max(id) + 1 AS \"next_id\" FROM price LIMIT 1;";
 
     @Query(

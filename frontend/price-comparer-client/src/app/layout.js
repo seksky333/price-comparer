@@ -1,15 +1,14 @@
- import "./globals.css";
- import NavBar from '../components/NavBar';
+import "./globals.css";
+import NavBar from "../components/navBar";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="px-4">
-        <header>
-        <NavBar />
-        </header>
-        <main>{children}</main>
-        <footer>Footer</footer>
+        <div className="flex">
+          <NavBar />
+        </div>
+        <main className="flex">{children}</main>
       </body>
     </html>
   );

@@ -1,11 +1,11 @@
 package xyz.seksky.productcomparer.Entity;
 
 import jakarta.persistence.*;
-import xyz.seksky.productcomparer.network.requests.PriceRequest;
+import xyz.seksky.productcomparer.models.Product;
 
 @Entity
 @Table(name = "price")
-public class ProductPriceEntity {
+public class ProductEntity {
     @Id
     Long id;
     String productName;
@@ -15,10 +15,10 @@ public class ProductPriceEntity {
     String referenceUrl;
     String viewDate;
 
-    public ProductPriceEntity() {
+    public ProductEntity() {
     }
 
-    public ProductPriceEntity(Long id, String productName, String productModel, String productPrice, String seller, String viewDate, String referenceUrl) {
+    public ProductEntity(Long id, String productName, String productModel, String productPrice, String seller, String viewDate, String referenceUrl) {
         this.id = id;
         this.productName = productName;
         this.productModel = productModel;
@@ -28,7 +28,7 @@ public class ProductPriceEntity {
         this.referenceUrl = referenceUrl;
     }
 
-    public ProductPriceEntity(String productName, String productModel, String productPrice, String seller, String viewDate, String referenceUrl) {
+    public ProductEntity(String productName, String productModel, String productPrice, String seller, String viewDate, String referenceUrl) {
         this.productName = productName;
         this.productModel = productModel;
         this.productPrice = productPrice;
@@ -64,4 +64,5 @@ public class ProductPriceEntity {
     public String getReferenceUrl() {
         return referenceUrl;
     }
+
 }
