@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
         <div className="flex">
           <NavBar />
         </div>
-        <main className="flex">{children}</main>
+        <main className="md:container md:mx-auto">{children}</main>
       </body>
     </html>
   );

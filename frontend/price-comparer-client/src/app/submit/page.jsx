@@ -1,15 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getProducts } from "../../data/products";
+import { getProducts, submitProductEntry } from "../../data/products";
 
 export default function SubmitPage() {
   const [formData, setFormData] = useState({
-    productName: "",
-    productModel: "",
+    productName: "Test Product",
+    productModel: "Test MOdel",
     productPrice: 0.0,
-    sellter: "",
-    viewDate: "",
-    reference_url: "",
+    seller: "Test Seller",
+    viewDate: "20-08-2023",
+    referenceUrl: "google.com",
   });
 
   const handleChange = (event) => {
@@ -19,178 +19,152 @@ export default function SubmitPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
+    transformToNetworkModel(formData);
+    // submitEntry();
   };
 
-  const fetchProductPrice = async () =>{
-    const products = await getProducts();
-    console.log(products);
-  }
+  const transformToNetworkModel = (model) => {
+    console.log(model);
+    
+  };
+
+  const submitEntry = async () => {
+    const response = await submitProductEntry(formData);
+    console.log(response);
+  };
 
   useEffect(() => {
-    fetchProductPrice();
+    // pick today's date
   }, []);
-
-
 
   // const productPrice = await getProductPrice();
 
   return (
     <>
-      <form>
+      <form
+        onSubmit={handleSubmit}
+        className="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8"
+      >
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Personal Information
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              Use a permanent address where you can receive mail.
-            </p>
-
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="first-name"
+                  htmlFor="product-name"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  First name
+                  Product Name
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    name="productName"
+                    id="product-name"
+                    onChange={handleChange}
+                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="last-name"
+                  htmlFor="product-model"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Last name
+                  Product Model
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    name="productModel"
+                    id="product-model"
+                    onChange={handleChange}
+                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-              <div className="sm:col-span-3">
+              <div className="sm:col-span-2">
                 <label
-                  htmlFor="first-name"
+                  htmlFor="product-price"
+                  onChange={handleChange}
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  First name
+                  Price
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="number"
+                    name="productPrice"
+                    id="product-price"
+                    onChange={handleChange}
+                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="seller"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Seller
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    name="seller"
+                    id="seller"
+                    onChange={handleChange}
+                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
+              <div className="sm:col-span-2">
                 <label
-                  htmlFor="last-name"
+                  htmlFor="view-date"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Last name
+                  View date
                 </label>
                 <div className="mt-2">
                   <input
+                    id="view-date"
+                    name="viewDate"
+                    type="date"
+                    onChange={handleChange}
+                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="reference-url"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Reference url
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="reference-url"
+                    name="referenceUrl"
                     type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Email address
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Email address
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    onChange={handleChange}
+                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </form>
-      <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+          <button
+            type="submit"
+            className="flex w-full justify-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Submit
+          </button>
         </div>
-
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button type="submit">Submit</button>
       </form>
     </>
   );
