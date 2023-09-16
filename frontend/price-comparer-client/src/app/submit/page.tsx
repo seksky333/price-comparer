@@ -2,6 +2,23 @@
 import { useState, useEffect } from "react";
 import { getProducts, submitProductEntry } from "../../data/products";
 
+interface productEntryModel {
+  productName: string,
+  productModel: string,
+  productPrice: number,
+  seller: string,
+  viewDate: string,
+  referenceUrl: string,
+}
+interface productEntryNetworkModel {
+  product_name: string
+}
+
+interface Event {
+  target: { name: any; value: any; };
+  preventDefault: any
+}
+
 export default function SubmitPage() {
   const [formData, setFormData] = useState({
     productName: "Test Product",
@@ -12,23 +29,27 @@ export default function SubmitPage() {
     referenceUrl: "google.com",
   });
 
-  const handleChange = (event) => {
+
+  const handleChange = (event: Event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: Event) => {
     event.preventDefault();
-    transformToNetworkModel(formData);
-    // submitEntry();
+    const networkModel = transformToNetworkModel(formData);
+    submitEntry(networkModel);
   };
 
-  const transformToNetworkModel = (model) => {
-    console.log(model);
-    
+  function transformToNetworkModel(model: productEntryModel): productEntryNetworkModel {
+    let aModel: productEntryNetworkModel = {
+      product_name: model.productName
+    }
+
+    return aModel;
   };
 
-  const submitEntry = async () => {
+  const submitEntry = async (networkModel: productEntryNetworkModel) => {
     const response = await submitProductEntry(formData);
     console.log(response);
   };
@@ -41,8 +62,7 @@ export default function SubmitPage() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
+      <form onSubmit={handleSubmit}
         className="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8"
       >
         <div className="space-y-12">
