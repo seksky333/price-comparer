@@ -1,5 +1,6 @@
 package xyz.seksky.productcomparer.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,7 +37,7 @@ public class ProductPriceController {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PriceResponse> purchaseSeat(@RequestBody PriceRequest request) {
+    public ResponseEntity<PriceResponse> purchaseSeat(@Valid @RequestBody PriceRequest request) {
         try {
             productService.addPrice(
                     new ProductEntity(

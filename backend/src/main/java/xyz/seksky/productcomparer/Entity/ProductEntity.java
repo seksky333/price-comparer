@@ -1,7 +1,8 @@
 package xyz.seksky.productcomparer.Entity;
 
-import jakarta.persistence.*;
-import xyz.seksky.productcomparer.models.Product;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "price")

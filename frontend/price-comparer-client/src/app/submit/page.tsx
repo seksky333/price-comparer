@@ -1,56 +1,47 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getProducts, submitProductEntry } from "../../data/products";
+import { ProductEntryModel, ProductEntryNetworkModel, submitProductEntry } from "../../data/products";
 
-interface productEntryModel {
-  productName: string,
-  productModel: string,
-  productPrice: number,
-  seller: string,
-  viewDate: string,
-  referenceUrl: string,
-}
-interface productEntryNetworkModel {
-  product_name: string
-}
 
-interface Event {
-  target: { name: any; value: any; };
-  preventDefault: any
-}
+
 
 export default function SubmitPage() {
-  const [formData, setFormData] = useState({
-    productName: "Test Product",
-    productModel: "Test MOdel",
+  const [formData, setFormData] = useState<ProductEntryModel>({
+    productName: "",
+    productModel: "",
     productPrice: 0.0,
-    seller: "Test Seller",
-    viewDate: "20-08-2023",
-    referenceUrl: "google.com",
+    seller: "",
+    viewDate: "",
+    referenceUrl: "",
   });
 
 
-  const handleChange = (event: Event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event: Event) => {
+  const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     const networkModel = transformToNetworkModel(formData);
     submitEntry(networkModel);
   };
 
-  function transformToNetworkModel(model: productEntryModel): productEntryNetworkModel {
-    let aModel: productEntryNetworkModel = {
-      product_name: model.productName
+  function transformToNetworkModel(model: ProductEntryModel): ProductEntryNetworkModel {
+    let aModel: ProductEntryNetworkModel = {
+      product_name: model.productName,
+      product_model: model.productModel,
+      product_price: model.productPrice,
+      seller: model.seller,
+      view_date: model.viewDate,
+      reference_url: model.referenceUrl
     }
 
     return aModel;
   };
 
-  const submitEntry = async (networkModel: productEntryNetworkModel) => {
-    const response = await submitProductEntry(formData);
+  const submitEntry = async (networkModel: ProductEntryNetworkModel) => {
+    const response = await submitProductEntry(networkModel);
     console.log(response);
   };
 

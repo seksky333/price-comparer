@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getProducts } from "../data/products";
+import { ProductListModel, getProducts } from "../data/products";
 
 export default function Home() {
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState<Array<ProductListModel>>([]);
 
   const fetchProductPrice = async () => {
     const data = await getProducts();
