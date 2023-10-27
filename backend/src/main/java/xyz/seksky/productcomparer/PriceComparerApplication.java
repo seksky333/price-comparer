@@ -7,10 +7,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class ProductComparerApplication {
+public class PriceComparerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProductComparerApplication.class, args);
+        SpringApplication.run(PriceComparerApplication.class, args);
+        System.out.println("Price Comparer is running!");
     }
 
     @Bean

@@ -10,7 +10,7 @@ import xyz.seksky.productcomparer.network.responses.GetPriceResponse;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ProductComparerApplicationTests {
+class PriceComparerApplicationTests {
     final String domain = "http://localhost";
 
     @LocalServerPort
