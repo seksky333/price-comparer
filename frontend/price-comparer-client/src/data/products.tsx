@@ -30,14 +30,14 @@ export interface ProductEntryModel {
 
 
 export async function getProducts() {
-  const url = "https://192.168.1.33:8091/products";
+  const url = "http://127.0.0.1:8092/products";
   const response = await fetch(url);
   const body = await response.json();
   return body;
 }
 
 export async function submitProductEntry(networkModel: ProductEntryNetworkModel) {
-  const url = "https://192.168.1.33:8091/products";
+  const url = "http://127.0.0.1:8092/products";
   const response = await fetch(url, {
     method: "POST",
     cache: "no-cache",
