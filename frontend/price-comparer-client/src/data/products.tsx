@@ -1,3 +1,6 @@
+const server = "http://192.168.1.33:8092"
+
+
 export interface ProductEntryNetworkModel {
   product_name: string,
   product_model: String,
@@ -30,14 +33,14 @@ export interface ProductEntryModel {
 
 
 export async function getProducts() {
-  const url = "http://127.0.0.1:8092/products";
+  const url = `${server}/products`;
   const response = await fetch(url);
   const body = await response.json();
   return body;
 }
 
 export async function submitProductEntry(networkModel: ProductEntryNetworkModel) {
-  const url = "http://127.0.0.1:8092/products";
+  const url = `${server}/products`;
   const response = await fetch(url, {
     method: "POST",
     cache: "no-cache",
