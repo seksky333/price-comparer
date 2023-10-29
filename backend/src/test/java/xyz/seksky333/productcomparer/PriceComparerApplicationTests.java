@@ -1,11 +1,11 @@
-package xyz.seksky.productcomparer;
+package xyz.seksky333.productcomparer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import xyz.seksky.productcomparer.network.responses.GetPriceResponse;
+import xyz.seksky333.productcomparer.network.responses.GetPriceResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

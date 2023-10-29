@@ -1,4 +1,4 @@
-package xyz.seksky.productcomparer.Entity;
+package xyz.seksky333.productcomparer.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,4 +1,4 @@
-package xyz.seksky.productcomparer.models;
+package xyz.seksky333.productcomparer.models;
 
 import java.util.List;
 

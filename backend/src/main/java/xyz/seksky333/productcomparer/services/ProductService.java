@@ -1,17 +1,16 @@
-package xyz.seksky.productcomparer.services;
+package xyz.seksky333.productcomparer.services;
 
-import xyz.seksky.productcomparer.Entity.ProductEntity;
+import xyz.seksky333.productcomparer.Entity.ProductEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.seksky.productcomparer.models.Product;
-import xyz.seksky.productcomparer.models.ProductEntry;
-import xyz.seksky.productcomparer.repositories.ProductRepository;
+import xyz.seksky333.productcomparer.models.Product;
+import xyz.seksky333.productcomparer.models.ProductEntry;
+import xyz.seksky333.productcomparer.repositories.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {

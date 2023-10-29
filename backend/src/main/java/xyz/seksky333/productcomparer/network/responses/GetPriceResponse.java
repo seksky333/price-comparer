@@ -1,8 +1,7 @@
-package xyz.seksky.productcomparer.network.responses;
+package xyz.seksky333.productcomparer.network.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import xyz.seksky.productcomparer.Entity.ProductEntity;
-import xyz.seksky.productcomparer.models.Product;
+import xyz.seksky333.productcomparer.models.Product;
 
 import java.util.List;
 

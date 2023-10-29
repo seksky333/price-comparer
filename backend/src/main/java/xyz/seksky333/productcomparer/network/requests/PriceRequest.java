@@ -1,4 +1,4 @@
-package xyz.seksky.productcomparer.network.requests;
+package xyz.seksky333.productcomparer.network.requests;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

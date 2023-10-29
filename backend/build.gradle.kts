@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.2"
 }
 
-group = "xyz.seksky"
+group = "xyz.seksky333"
 //version = "0.0.1"
 
 java {
