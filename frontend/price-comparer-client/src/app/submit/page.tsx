@@ -97,7 +97,6 @@ export default function SubmitPage() {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="product-price"
-                  onChange={handleChange}
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Price
