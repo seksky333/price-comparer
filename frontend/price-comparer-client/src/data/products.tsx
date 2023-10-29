@@ -1,4 +1,4 @@
-const server = "http://192.168.1.33:8092"
+const server = "https://price-backend.seksky333.xyz"
 
 
 export interface ProductEntryNetworkModel {
